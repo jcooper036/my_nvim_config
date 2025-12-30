@@ -43,7 +43,7 @@ echo "# neovim alias\nalias vim='nvim'" >> .zshrc
 
 ## 3. Clone this repo
 ```bash
-git clone git@github.com:jcooper036/my_nvim_config.git config/nvim/lua/custom
+git clone git@github.com:jcooper036/my_nvim_config.git ~/.config/nvim/lua/custom
 ```
 If all done correctly, you should have a `~/.config/nvim` that you can pull from NvChad, and a `~/.config/nvim/lua/custom` (which NvChad ignores) that you can pull from this repo.
 
