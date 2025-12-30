@@ -64,6 +64,10 @@ return {
   -- loads by default, which should just be lspconfig and conform
   {
     "neovim/nvim-lspconfig",
+    dependencies = {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+    },
     config = function()
       require "configs.lspconfig"
       require "custom.configs.lspconfig"
@@ -88,10 +92,8 @@ If everything has worked, `<leader> ch` should bring up the cheatsheet, and unde
 
 There are some other things you can try, like :DBUI which should start the dadbod database UI utility. 
 
-## Misc
-To update - warning, could break things in your config.
-```bash
-which nvim && nvim --version
-brew upgrade neovim
-cd ~/.config/nvim && git pull
-```
+# Installing plugins
+- modify `lua/custom/plugins.lua`
+
+# Installing lsps
+Install with Mason. The `lua/custom/configs/lspconfig.lua` module is set up to automatically pick up new lsps
