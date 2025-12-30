@@ -1,31 +1,32 @@
----@type MappingsTable
-local M = {}
-
-M.general = {
-  n = {
-    [";"] = { ":", "enter command mode", opts = { nowait = true } },
-
-    --  format with conform
-    ["<leader>fm"] = {
-      function()
-        require("conform").format()
-      end,
-      "formatting",
-    },
-    ["<leader>mp"] = {
-      "<cmd> MarkdownPreview <CR>",
-      "Markdown Preview",
-    },
-    ["<leader>fk"] = {
-      "<cmd> Telescope keymaps <CR>",
-      "Telescope keymaps",
-    },
+local C = {
+  {
+    modes = { "n" },
+    keybind = "<leader>kk",
+    mapping_info = "<cmd> Telescope keymaps <CR>",
+    -- this is telling it to go in the Telescope category under Keymaps
+    desc = "Telescope keymaps",
   },
-  v = {
-    [">"] = { ">gv", "indent" },
+  {
+    modes = { "n" },
+    keybind = ";",
+    mapping_info = ":",
+    desc = "enter command mode",
+    opts = { nowait = true },
+  },
+  {
+    modes = { "v" },
+    keybind = ">",
+    mapping_info = ">gv",
+    desc = "indent",
   },
 }
 
--- more keybinds!
+local map = vim.keymap.set
 
-return M
+for _, mp in ipairs(C) do
+  local opts = mp.opts or {}
+  opts.desc = mp.desc
+  map(mp.modes, mp.keybind, mp.mapping_info, opts)
+end
+
+return C
